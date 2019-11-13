@@ -21,13 +21,12 @@ services:
     #   - db
     volumes:
       - ./faceLogin:/src
+      - ./init.sh:/init.sh
     ports:
-      - "5002:5002"
+      - "5003:5003"
     expose:
-      - "5002"
-    # entrypoint: docker-entrypoint.sh
-    command: 
-      - /src/init.sh
+      - "5003"
+    command: sh ./init.sh
 
 
     # links:
