@@ -1,0 +1,42 @@
+version: '2'  
+services:  
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: nz01
+  #   ports:
+  #     - "8998:8998"
+  #   volumes:
+  #     - ./src:/src
+  #     - ./config/nginx:/etc/nginx/conf.d
+  #   depends_on:
+  #     - web
+  faceLogin:
+    # build: .
+    image: ubuntu:latest
+    container_name: faceLogin
+    restart: always
+    environment:
+      USER: root
+    # depends_on:
+    #   - db
+    volumes:
+      - ./faceLogin:/src
+    ports:
+      - "5002:5002"
+    expose:
+      - "5002"
+    # entrypoint: docker-entrypoint.sh
+    command: 
+      - /src/init.sh
+
+
+    # links:
+    #   - redis
+  # db:
+  #   image: postgres:alpine
+  #   container_name: pz01
+  # redis:
+  #   image: redis:alpine
+  #   container_name: rz01
+  #   ports:
+  #    - '6379:6379'
